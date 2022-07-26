@@ -1,0 +1,32 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ControlDevelopLearning">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <local:ClickablePanel />
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="local|ClickablePanel">
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="Background" Value="Wheat" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Name="PART_RootPanel">
+                    <TextBlock Text="Press me" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="local|ClickablePanel /template/ Panel#PART_RootPanel">
+        <Setter Property="Background" Value="{TemplateBinding Background}" />
+    </Style>
+
+    <Style Selector="local|ClickablePanel /template/ TextBlock">
+        <Setter Property="Foreground"
+                Value="{Binding TextForeground, 
+                        RelativeSource={RelativeSource AncestorType=local:ClickablePanel}}" />
+    </Style>
+</Styles>

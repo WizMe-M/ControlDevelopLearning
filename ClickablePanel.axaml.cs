@@ -9,13 +9,6 @@ namespace ControlDevelopLearning;
 public partial class ClickablePanel : UserControl
 {
     private Panel _rootPanel;
-    
-    public ClickablePanel()
-    {
-        InitializeComponent();
-    }
-
-    private void InitializeComponent() => AvaloniaXamlLoader.Load(this);
 
     public static readonly StyledProperty<IBrush> TextForegroundProperty =
         AvaloniaProperty.Register<ClickablePanel, IBrush>(nameof(TextForeground), Brushes.Black, true);
