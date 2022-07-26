@@ -2,6 +2,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 
@@ -33,5 +34,11 @@ public partial class ClickablePanel : UserControl
     {
         base.OnApplyTemplate(e);
         _rootPanel = this.FindControl<Panel>("PART_RootPanel");
+    }
+
+    protected override void OnPointerReleased(PointerReleasedEventArgs e)
+    {
+        base.OnPointerReleased(e);
+        RaiseEvent(new RoutedEventArgs(ClickEvent));
     }
 }
